@@ -11,10 +11,17 @@ module.exports = (options) => {
         const ssrApp = render(<App  options={options}/>)
         const html = `
           <!DOCTYPE html>
-            <div id="app">${ssrApp}</div>
-            <script src="jspm_packages/system.js"></script>
-            <script src="config.js"></script>
-            <script>System.import('index.js')</script>
+          <div id="app">${ssrApp}</div>
+          <script src="jspm_packages/system.js"></script>
+          <script src="config.js"></script>
+          <script>
+            if (${options.hml}) { 
+              System.trace = true
+              window.hml = System.import('systemjs-hot-reloader/default-listener')
+            }
+            Promise.resolve(window.hml)
+              .then(() => System.import('index.js'))
+          </script>
         `
         res.status(200).send(html)
       }
