@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "jspm install",
-    "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js",
-    "start": "npm run bundle && node server.js"
+    "bundle": "jspm bundle index.js --inject --minify",
+    "start": "node server.js"
   },
   "author": "",
   "license": "MIT",

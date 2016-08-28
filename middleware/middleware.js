@@ -11,8 +11,9 @@ module.exports = (options) => {
         const ssrApp = render(<App  options={options}/>)
         const html = `
           <!DOCTYPE html>
-            <div id="app"></div>
-            <script src="/js/bundle-sfx.js" />
+            <div id="app">${ssrApp}</div>
+            <script src="jspm_packages/system.js"></script>
+            <script src="config.js"></script>
             <script>System.import('index.js')</script>
         `
         res.status(200).send(html)
@@ -20,7 +21,7 @@ module.exports = (options) => {
     next()
   }
 
-  const serveStatics = express.static(`./${(options.public || 'public')}`)
+  const serveStatics = express.static(`./${(options.public || 'app')}`)
 
   return (req, res, next) => 
     serveStatics(req, res, () =>
