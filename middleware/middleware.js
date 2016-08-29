@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 import {renderToString as render} from 'react-dom/server'
 import React from 'react'
 import App from '../app/app'
