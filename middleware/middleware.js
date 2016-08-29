@@ -14,9 +14,11 @@ module.exports = (options) => {
           <script src="jspm_packages/system.js"></script>
           <script src="config.js"></script>
           <script>
-            if (${options.hml}) { 
-              System.trace = true
-              window.hml = System.import('systemjs-hot-reloader/default-listener')
+            ${
+              options.hml ? `
+                System.trace = true
+                window.hml = System.import('systemjs-hot-reloader/default-listener')
+              ` : ``
             }
             Promise.resolve(window.hml)
               .then(() => System.import('index.js'))
