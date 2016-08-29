@@ -6,8 +6,7 @@ import App from '../app/app'
 module.exports = (options) => {
 
   const serveApp = (req, res, next) => {
-      const endpointRegX = new RegExp(options.url);
-      if (endpointRegX.test(req.url)) {
+      if (req.url === options.endPoint) {
         const ssrApp = render(<App  options={options}/>)
         const html = `
           <!DOCTYPE html>
