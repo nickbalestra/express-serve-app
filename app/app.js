@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default function App(){
-  return <div>Yo!</div>
+  return <div>Shakalaka!</div>
 }
