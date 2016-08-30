@@ -5,8 +5,8 @@
   "main": "middleware/index.js",
   "scripts": {
     "postinstall": "jspm install",
-    "bundle": "jspm bundle index.js --inject --minify",
-    "dev": "npm run bundle && HML=true npm start"
+    "bundle": "jspm bundle index.js --inject --minify --lowResSourceMaps --sourceMaps",
+    "dev": "HML=true npm start"
   },
   "author": "",
   "license": "MIT",
